@@ -1,0 +1,47 @@
+# ─── Delphi / RAD Studio build artifacts ───────────────────────────────
+# Compiled units & packages
+*.dcu
+*.dcp
+*.bpl
+*.bpi
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.tds
+*.map
+*.drc
+*.dbg
+
+# Build output folders
+Win32/
+Win64/
+Win32x64/
+Android/
+Android64/
+iOSDevice64/
+iOSSimulator/
+OSX64/
+OSXARM64/
+Linux64/
+[Dd]ebug/
+[Rr]elease/
+
+# IDE / user-specific files
+*.local
+*.identcache
+*.projdata
+*.tvsconfig
+*.dsk
+*.stat
+*.skincfg
+__history/
+__recovery/
+modules/
+
+# Editor / OS backups
+*.~*
+*.bak
+Thumbs.db
+.DS_Store

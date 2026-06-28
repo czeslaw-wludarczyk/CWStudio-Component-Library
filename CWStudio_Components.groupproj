@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B3F8E1A2-7C4D-4E9A-9B5F-3A1D6C2E8F40}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CWStudio_ComponentsRT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="CWStudio_ComponentsDT.dproj">
+            <Dependencies>CWStudio_ComponentsRT.dproj</Dependencies>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CWStudio_ComponentsRT">
+        <MSBuild Projects="CWStudio_ComponentsRT.dproj"/>
+    </Target>
+    <Target Name="CWStudio_ComponentsRT:Clean">
+        <MSBuild Projects="CWStudio_ComponentsRT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CWStudio_ComponentsRT:Make">
+        <MSBuild Projects="CWStudio_ComponentsRT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="CWStudio_ComponentsDT" DependsOnTargets="CWStudio_ComponentsRT">
+        <MSBuild Projects="CWStudio_ComponentsDT.dproj"/>
+    </Target>
+    <Target Name="CWStudio_ComponentsDT:Clean" DependsOnTargets="CWStudio_ComponentsRT:Clean">
+        <MSBuild Projects="CWStudio_ComponentsDT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CWStudio_ComponentsDT:Make" DependsOnTargets="CWStudio_ComponentsRT:Make">
+        <MSBuild Projects="CWStudio_ComponentsDT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CWStudio_ComponentsRT;CWStudio_ComponentsDT"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CWStudio_ComponentsRT:Clean;CWStudio_ComponentsDT:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CWStudio_ComponentsRT:Make;CWStudio_ComponentsDT:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
